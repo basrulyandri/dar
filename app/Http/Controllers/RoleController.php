@@ -9,7 +9,7 @@ use App\Http\Requests;
 class RoleController extends Controller
 {
     public function index(){
-    	$roles = \App\Role::all();
+    	$roles = \App\Role::paginate(10);
     	return view('roles.index',['roles' => $roles,'no' => 1]);
     }
 
@@ -35,6 +35,7 @@ class RoleController extends Controller
 
     	$role = \App\Role::findOrFail($id);
         $rolepermissions = $role->permissions()->pluck('name_permission','permissions.id');
+        //dd(\App\Permission::all());
     	return view('roles.edit',['role' => $role,'rolepermissions'=>$rolepermissions,'allpermissions' => \App\Permission::all()]);
     }
 
@@ -43,10 +44,8 @@ class RoleController extends Controller
         //dd($request->perms);
     	
         $role = \App\Role::findOrFail($id);    	   	
-    	if($request->input('perms')){
-    	   $role->permissions()->sync($request->input('perms'));
-        }
-       
+    	
+    	$role->permissions()->sync($request->input('perms'));
     	
     	$role->update(['name' => $request->input('name')]);
 

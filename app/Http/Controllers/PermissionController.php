@@ -9,8 +9,7 @@ use App\Http\Requests;
 class PermissionController extends Controller
 {
     public function index(){
-      $permissions = \App\Permission::all();
-      $count = 1;
+      $permissions = \App\Permission::paginate(10);      
       return view('permissions.index',compact('permissions','count'));
 
     }

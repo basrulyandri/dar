@@ -27,13 +27,19 @@
                             <ul class="sub-menu">
                                 <li class="nav-item{{(request()->is('users')) ? ' active open':''}}">
                                     <a href="{{route('users.index')}}" class="nav-link ">
-                                        <span class="title">List</span>
+                                        <span class="title">List Users</span>
                                     </a>
                                 </li>
 
-                                 <li class="nav-item{{(request()->is('user/add')) ? ' active open':''}}">
-                                    <a href="{{route('user.add')}}" class="nav-link ">
-                                        <span class="title">Add User</span>
+                                 <li class="nav-item{{(request()->is('roles')) ? ' active open':''}}">
+                                    <a href="{{route('roles.index')}}" class="nav-link ">
+                                        <span class="title">Roles</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item{{(request()->is('permissions')) ? ' active open':''}}">
+                                    <a href="{{route('permissions.index')}}" class="nav-link ">
+                                        <span class="title">Permissions</span>
                                     </a>
                                 </li>                                
                             </ul>

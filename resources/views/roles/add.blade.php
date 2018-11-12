@@ -7,54 +7,57 @@
 @stop
 
 @section('content')
-  	<div class="row wrapper border-bottom white-bg page-heading">
-        <div class="col-sm-4">
-            <h2>Add Roles</h2>
-            <ol class="breadcrumb">
-                <li class="active">
-                    <a href="{{route('roles.index')}}">Roles</a>
-                </li>                
-                <li class="active">
-                    <a href="{{route('role.add')}}">Add</a>
-                </li>                
-            </ol>
-        </div>
-        <div class="col-sm-8">
-            <div class="title-action">
-                <a href="{{route('role.add')}}" class="btn btn-success"><i class="fa fa-plus"></i> Add Role</a>
-            </div>
-        </div>
-    </div>
 
-    <div class="wrapper wrapper-content animated fadeInRight">
-        <div class="row">
-            <div class="col-md-12">
-                {!!Form::open(['route' => 'role.create','class' => 'form-horizontal'])!!}
-                    <div class='form-group{{$errors->has('name') ? ' has-error' : ''}}'>
-                        {!!Form::label('name','Name',['class' => 'col-sm-2 control-label'])!!}
-                        <div class="col-sm-10">
-                          {!!Form::text('name',old('name'),['class' => 'form-control','placeholder' => 'Name','required' => 'true'])!!}
-                          @if($errors->has('name'))
-                            <span class="help-block">{{$errors->first('name')}}</span>
-                          @endif
+<div class="row">
+        <div class="col-md-12">
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                   
+                    <div class="actions">
+                        <div class="btn-group btn-group-devided">
+                            
                         </div>
-                    </div>                    
-            </div>
-            <div class="hr-line-dashed text-info"></div>
-            <div class="col-md-12 col-md-offset-2">
-            <h3>Attach Role to Permissions below</h3>
-                @foreach($allpermissions as $perm)
-                    <div class="checkbox">
-                        <label for="">
-                        <input name="perms[]" type="checkbox" class="i-check" value="{{$perm->id}}" > {{$perm->name_permission}} ({{$perm->label}})                        
-                        </label>
                     </div>
-                    @endforeach
+                </div>
+                <div class="portlet-body"> 
+                <div class="row">
+                    {!!Form::open(['route' => 'role.create'])!!}                    
+                    <div class="col-md-4">
+                        <div class="form-group form-md-line-input form-md-floating-label has-success">
+                            <input type="text" class="form-control" id="name" name="name">
+                            <label for="name">Role Name</label>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group form-md-checkboxes">
+                            <label>Permissions</label>
+                            @foreach($allpermissions as $permission)
+                                <div class="md-checkbox-list">
+                                    <div class="md-checkbox">
+                                        <input type="checkbox" id="checkbox{{$permission->id}}" name="perms[]" class="md-check" value="{{$permission->id}}"> 
+                                        <label for="checkbox{{$permission->id}}">
+                                            <span class="inc"></span>
+                                            <span class="check"></span>
+                                            <span class="box"></span> {{$permission->name_permission}} {{$permission->label}})
+                                        </label>
+                                    </div>                                
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div> 
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="submit" class="btn btn-primary pull-right" value="Save">
+                        {!!Form::close()!!}   
+                    </div>
+                </div>                  
             </div>
-                    <input type="submit" class="btn btn-primary pull-right" value="Save">
-                {!!Form::close()!!}
         </div>
     </div>
+</div>
     
 @stop
 

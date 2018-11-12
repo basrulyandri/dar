@@ -7,58 +7,46 @@
 @stop
 
 @section('content')
-  	<div class="row wrapper border-bottom white-bg page-heading">
-        <div class="col-sm-4">
-            <h2>Roles</h2>
-            <ol class="breadcrumb">
-                <li class="active">
-                    <a href="{{route('roles.index')}}">Roles</a>
-                </li>                
-            </ol>
-        </div>
-        <div class="col-sm-8">
-            <div class="title-action">
-                <a href="{{route('role.add')}}" class="btn btn-success"><i class="fa fa-plus"></i> Add Role</a>
-            </div>
-        </div>
-    </div>
 
-    <div class="wrapper wrapper-content animated fadeInRight">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="ibox float-e-margins">                    
-                    <div class="ibox-content">
-
-                        <table class="table table-hover">
+<div class="row">
+        <div class="col-md-12">
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                   
+                    <div class="actions">
+                        <div class="btn-group btn-group-devided">
+                            <a href="{{route('role.add')}}" class="btn btn-success"><i class="fa fa-plus"></i> Add Role</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet-body">                    
+                    <div class="table-scrollable table-scrollable-borderless">
+                        <table class="table table-hover table-light">
                             <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Action</th>
-                            </tr>
+                                <tr class="uppercase">
+                                    <th> Role </th>                                    
+                                    <th> ACTIONS </th>
+                                </tr>
                             </thead>
                             <tbody>
-                            <?php $no=1;?>
                             @foreach($roles as $role)
-                            <tr>
-                                <td>{{$no}}</td>
-                                <td><a href="{{route('role.edit',['id' => $role->id])}}">{{$role->name}}</a></td>
-                                <td>{{$role->name}}</td>
-                                <td>
-                                    <button id="{{$role->id}}" class='btn btn-danger'>Delete</button>
-                                </td>
-                            </tr>
-                            <?php $no++;?>
-                            @endforeach                                
+                                <tr>
+                                    <td><a href="{{route('role.edit',$role)}}">{{$role->name}}</a></td>
+                                    <td>                                                                     
+                                        <a  class="btn btn-danger btn-xs hapus" id="{{$role->id}}" title="Delete"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
+         <div class="col-md-12">
+            {{$roles->links()}}            
+        </div>
     </div>
-    
 @stop
 
 @section('footer')

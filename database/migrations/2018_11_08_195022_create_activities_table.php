@@ -24,6 +24,7 @@ class CreateActivitiesTable extends Migration
             $table->integer('approved_by');
             $table->string('status');
             $table->unsignedInteger('user_id');
+            $table->integer('division_id');
             $table->index('user_id');
             $table->timestamps();
         });

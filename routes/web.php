@@ -121,6 +121,8 @@ Route::group(['middleware' => 'rbac'],function(){
 		'uses' => 'PermissionController@delete',
 		'as' => 'permission.delete',
 	]);
+	Route::delete('divisions/deleteAll', 'DivisionController@deleteAll')->name('divisions.deleteAll');
+	Route::resource('divisions', 'DivisionController');
 });
 
 Route::get('login',[

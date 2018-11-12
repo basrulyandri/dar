@@ -28,6 +28,16 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
+    public function divisions()
+    {
+        return $this->belongsToMany(Division::class);
+    }
+
+    public function activities()
+    {
+        return $this->hasMany(Activity::class);
+    }
+
     public function getNameOrEmail($fullname = false)
     {
         if($this->first_name){

@@ -19,38 +19,34 @@
                         </div>
                     </div>
                 </div>
-                <div class="portlet-body">                    
-                    <div class="table-scrollable table-scrollable-borderless">
-                        <table class="table table-hover table-light">
-                            <thead>
-                                <tr class="uppercase">
-                                    <th colspan="2"> USER </th>
-                                    <th> ROLE </th>                                   
-                                    <th> ACTIONS </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($users as $user)
-                                <tr>
-                                    <td class="fit">
-                                        <img class="user-pic" src="{{$user->getAvatarUrl()}}"> </td>
-                                    <td>
-                                        <a href="{{route('user.profile',$user->username)}}" class="primary-link">{{$user->getNameOrEmail(true)}}</a>
-                                    </td>
-                                    <td> {{$user->role->name}} </td>                                    
-                                    <td>                                                                                
-                                        <a  class="btn btn-danger btn-xs hapus" user-id="{{$user->id}}" title="Delete"><i class="fa fa-trash"></i></a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                <div class="portlet-body">   
+
+                <div class="row">                    
+                   @foreach($users as $user)
+                    <div class="col-md-2">
+                        <!--begin: widget 1-3 -->
+                        <div class="mt-widget-1">                            
+                            <div class="mt-img">
+                                <a href="{{route('user.profile',$user->username)}}"><img src="{{$user->getAvatarUrl()}}" class="img-circle" style="width:80px;"> </a>
+                            </div>
+                            <div class="mt-body">
+                                <a href="{{route('user.profile',$user->username)}}"><h3 class="mt-username">{{$user->getNameOrEmail(true)}}</h3></a>
+                                <p class="mt-user-title"> {{$user->role->name}} </p>                                
+                            </div>
+                        </div>
+                        <!--end: widget 1-3 -->
                     </div>
+                    @endforeach
+                </div>                    
                 </div>
             </div>
         </div>
     </div>
-    {{$users->links()}}
+    <div class="row">
+        <div class="col-md-12">
+            {{$users->links()}}            
+        </div>
+    </div>
    
 @stop
 
