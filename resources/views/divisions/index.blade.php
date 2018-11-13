@@ -88,8 +88,8 @@
               <label for="description">Description</label>
           </div>
           <div class="form-group form-md-line-input form-md-floating-label has-info">                     
-                {!!Form::select('manager',\App\User::pluck('username','id')->prepend('Choose manager for this division',''),old('manager'),['class' => 'form-control edited','id' => 'manager'])!!}
-                {!!Form::label('manager','Manager')!!}                        
+                {!!Form::select('manager_id',\App\User::pluck('username','id')->prepend('Choose manager for this division',''),old('manager_id'),['class' => 'form-control edited','id' => 'manager_id'])!!}
+                {!!Form::label('manager_id','Manager')!!}                        
           </div>             
       </div>
       <div class="modal-footer">        

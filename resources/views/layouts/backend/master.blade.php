@@ -43,6 +43,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <link href="{{asset('assets/metronic')}}/layouts/layout4/css/layout.min.css" rel="stylesheet" type="text/css" />
         <link href="{{asset('assets/metronic')}}/layouts/layout4/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color" />
         <link href="{{asset('assets/metronic')}}/layouts/layout4/css/custom.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{asset('assets/metronic')}}/layouts/layout4/css/rollo-custom.css" rel="stylesheet" type="text/css" />
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" /> </head>
     <!-- END HEAD -->
@@ -295,7 +296,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <!-- END PAGE TITLE -->
                         <!-- BEGIN PAGE TOOLBAR -->
                         <div class="page-toolbar">
-                           
+                           @yield('toolbar')
                         </div>
                         <!-- END PAGE TOOLBAR -->
                     </div>

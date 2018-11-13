@@ -28,9 +28,7 @@ class RbacMiddleware
         $permissions = [];        
         foreach($role->permissions as $perm){
             array_push($permissions,$perm->name_permission);
-        }
-
-        dd($permissions);
+        }      
 
         //cek apakah user memiliki permission yang dibandingkan dengan nama route
         if(!in_array($request->route()->getName(),$permissions)){

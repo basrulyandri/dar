@@ -14,11 +14,12 @@
                     <ul class="page-sidebar-menu   " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">                    
 
                         <li class="nav-item{{(request()->is('dashboard')) ? ' active open':''}}">
-                        <a href="{{route('dashboard.index')}}" class="nav-link nav-toggle"><i class="icon-home"></i> <span class="title">Dashboard</span></a></li>                        
+                        <a href="{{route('dashboard.index')}}" class="nav-link nav-toggle"><i class="icon-home"></i> <span class="title">Dashboard</span></a></li> 
+
                         <li class="heading">
                             <h3 class="uppercase">RBAC System</h3>
                         </li>
-                       <li class="nav-item {{(request()->is(['user/add','users','user/edit'])) ? ' active open':''}}">
+                        <li class="nav-item {{(request()->is(['user/add','users','user/edit'])) ? ' active open':''}}">
                             <a href="javascript:;" class="nav-link nav-toggle">
                                 <i class="icon-user"></i>
                                 <span class="title">Users</span>
@@ -44,6 +45,9 @@
                                 </li>                                
                             </ul>
                         </li>
+                        
+                        <li class="nav-item{{(request()->is('mydivisions')) ? ' active open':''}}">
+                        <a href="{{route('my.divisions')}}" class="nav-link nav-toggle"><i class="icon-home"></i> <span class="title">My Divisions</span></a></li>
                     </ul>
                     <!-- END SIDEBAR MENU -->
                 </div>

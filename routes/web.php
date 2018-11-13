@@ -123,6 +123,15 @@ Route::group(['middleware' => 'rbac'],function(){
 	]);
 	Route::delete('divisions/deleteAll', 'DivisionController@deleteAll')->name('divisions.deleteAll');
 	Route::resource('divisions', 'DivisionController');
+
+	Route::get('mydivisions', [
+			'uses' => 'DivisionController@mydivisions',
+			'as' => 'my.divisions',
+		]);
+	Route::get('mydivision/{division}', [
+			'uses' => 'DivisionController@mydivisiondetail',
+			'as' => 'my.division.detail',
+		]);
 });
 
 Route::get('login',[
