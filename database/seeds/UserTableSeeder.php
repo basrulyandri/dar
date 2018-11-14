@@ -22,6 +22,19 @@ class UserTableSeeder extends Seeder
             'first_name' => 'Superadmin',
             'last_name' => '',
             'activation_code' => str_random(60)
+        ]);
+
+        \DB::table('users')->insert([
+            'username' => 'basrul',
+            'email' => 'rolloic@gmail.com',
+            'password' => bcrypt('admin'),
+            'role_id' => 2,
+            'activated' => 1,
+            'api_token' => str_random(60),
+            'activated_at' => \Carbon\Carbon::now(),
+            'first_name' => 'Basrul',
+            'last_name' => 'Yandri',
+            'activation_code' => str_random(60)
         ]);        
     }
 }
