@@ -21,7 +21,8 @@ class UserTableSeeder extends Seeder
             'activated_at' => \Carbon\Carbon::now(),
             'first_name' => 'Superadmin',
             'last_name' => '',
-            'activation_code' => str_random(60)
+            'activation_code' => str_random(60),
+            'photo' => '/photos/1/admin.jpg'
         ]);
 
         \DB::table('users')->insert([
@@ -34,7 +35,8 @@ class UserTableSeeder extends Seeder
             'activated_at' => \Carbon\Carbon::now(),
             'first_name' => 'Basrul',
             'last_name' => 'Yandri',
-            'activation_code' => str_random(60)
+            'activation_code' => str_random(60),
+            'photo' => '/photos/1/ale.jpg'
         ]);        
     }
 }
