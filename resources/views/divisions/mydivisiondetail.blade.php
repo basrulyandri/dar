@@ -1,13 +1,14 @@
 @extends('layouts.backend.master')
 @section('header')
-  
+  <link rel="stylesheet" type="text/css" href="{{asset('assets/metronic/global/plugins/image-picker/image-picker.css')}}">
 @endsection
 @section('title')
   {{$division->name}} Division
 @stop
 
 @section('toolbar')
-<a href="{{route('role.add')}}" class="btn btn-success"><i class="fa fa-plus"></i> Add Role</a>
+
+<a class="btn btn-success" data-toggle="modal" href="#basic"><i class="fa fa-plus"></i> Add Members </a>
 @stop
 
 @section('content')
@@ -346,12 +347,53 @@
       </div>
   </div>         
 </div>
+
+<!-- Modal add Anggota -->
+ <div class="modal fade" id="basic" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Add Members to {{$division->name}} division</h4>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                        <div class="col-md-12">
+                            <div class="portlet light portlet-fit">                               
+                                <div class="portlet-body">
+                                    <div class="mt-element-card mt-element-overlay">
+                                        <div class="row">                     
+                                        {!!Form::open(['route' =>['division.add.members',$division]])!!}                       
+                                          <select name="members[]" multiple="multiple" id="chooseMembers" class="image-picker show-html">
+                                              @foreach($division->notMembers() as $notMember)
+                                                <option data-img-src="{{$notMember->getAvatarUrl()}}" value="{{$notMember->id}}" data-img-label="{{$notMember->getNameOrEmail(true)}}" data-img-class="custom-image-picker"> {{$notMember->getNameOrEmail(true)}}</option>
+                                              @endforeach                                              
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                <input type="submit" class="btn green" value="Add">
+                                          {!!Form::close()!!}
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- End of Modal add anggota -->
 @stop
 
 @section('footer')
+<script type="text/javascript" src="{{asset('assets/metronic/global/plugins/image-picker/image-picker.min.js')}}"></script>
  <script>
         $(document).ready(function() {            
-           
+           $("#chooseMembers").imagepicker({show_label:true});
         });        
     </script>
 @endsection

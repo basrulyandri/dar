@@ -12,3 +12,13 @@
 .members-nav-list{
 
 }
+
+ul.thumbnails.image_picker_selector li.custom-image-picker{
+	display: inline;
+	width:30%;
+}
+
+ul.thumbnails.image_picker_selector li .thumbnail p{
+	text-align: center;
+	font-weight: bold;
+}

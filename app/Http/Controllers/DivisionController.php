@@ -71,4 +71,9 @@ class DivisionController extends Controller
     {
         return view('divisions.mydivisiondetail',compact(['division']));
     }
+
+    public function addMembers(Division $division, Request $request)
+    {
+        dd($request->all());
+    }
 }

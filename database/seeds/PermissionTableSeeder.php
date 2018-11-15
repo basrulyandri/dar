@@ -15,12 +15,14 @@ class PermissionTableSeeder extends Seeder
         	['label' => 'Index Dashboard','name_permission' => 'dashboard.index'], 
         	['label' => 'My DIvisions','name_permission' => 'my.divisions'],
         	['label' => 'My Division Detail','name_permission' => 'my.division.detail'],
+            ['label' => 'Add division members','name_permission' => 'division.add.members'],
         ]);
 
         DB::table('permission_role')->insert([
         	['role_id' => 2,'permission_id' => 1],    
         	['role_id' => 2,'permission_id' => 2],    
-        	['role_id' => 2,'permission_id' => 3],         	
+        	['role_id' => 2,'permission_id' => 3], 
+            ['role_id' => 2,'permission_id' => 4],
         ]);
     }
 }

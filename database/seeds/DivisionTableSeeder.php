@@ -17,7 +17,7 @@ class DivisionTableSeeder extends Seeder
         ]);
 
         DB::table('division_user')->insert([
-        	['division_id' => 1,'user_id' => 2],
+        	['division_id' => 1,'user_id' => 2,'level' => 'manager'],
         ]);
     }
 }

@@ -17,6 +17,7 @@ class CreateDivisionUserTable extends Migration
             $table->increments('id');
             $table->integer('division_id');
             $table->integer('user_id');
+            $table->string('level');
             $table->timestamps();
         });
     }

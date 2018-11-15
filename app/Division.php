@@ -23,4 +23,12 @@ class Division extends Model
     {
         return $this->belongsTo(User::class,'manager_id');
     }
+
+    public function notMembers()
+    {
+        $members = $this->members->pluck('id')->toArray();
+
+        $notMembers = User::whereNotIn('id',$members)->Where('role_id',2)->get();
+        return $notMembers;
+    }
 }
