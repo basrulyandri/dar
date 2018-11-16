@@ -914,7 +914,7 @@ License: You must have a valid license purchased only from themeforest(the above
           @endif
 
           @if(Session::has('error'))
-            toastr.success('Error', '{{Session::get('toastr-error')}}')
+            toastr.success('Error', '{{Session::get('error')}}')
           @endif
             $(document).ready(function()
             {

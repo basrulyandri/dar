@@ -74,6 +74,10 @@ class DivisionController extends Controller
 
     public function addMembers(Division $division, Request $request)
     {
-        dd($request->all());
+        if($division->manager_id != auth()->user()->id){
+            return redirect()->back()->with('error','Add members to division must be a Manager');
+        }
+        $division->members()->attach($request->members,['level' => 'member']);
+        return redirect()->back()->with('success','Member has been added to '.$division->name.' Division');
     }
 }

@@ -30,7 +30,7 @@ class User extends Authenticatable
 
     public function divisions()
     {
-        return $this->belongsToMany(Division::class);
+        return $this->belongsToMany(Division::class)->withPivot('level');
     }
 
     public function activities()
@@ -95,6 +95,11 @@ class User extends Authenticatable
     public function totalPermissions()
     {
         return $this->role->permissions->count();
+    }
+
+    public function levelInDivision($division)
+    {
+        return $this->divisions()->wherePivot('division_id',$division->id)->first()->pivot->level;
     }
 
 }

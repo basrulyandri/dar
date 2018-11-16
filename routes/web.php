@@ -132,6 +132,7 @@ Route::group(['middleware' => 'rbac'],function(){
 			'uses' => 'DivisionController@mydivisiondetail',
 			'as' => 'my.division.detail',
 		]);
+	
 	Route::post('mydivision/{division}/addmembers', [
 			'uses' => 'DivisionController@addMembers',
 			'as' => 'division.add.members',

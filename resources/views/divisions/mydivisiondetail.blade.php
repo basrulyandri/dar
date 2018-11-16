@@ -23,7 +23,7 @@
           <div class="members-nav-list">
 
             @foreach($division->members as $member)
-              <a class="popovers" href="#" data-container="body" data-trigger="hover" data-placement="top" data-content="{{$member->role->name}}" data-original-title="{{$member->getNameOrEmail(true)}}"><img src="{{$member->getAvatarUrl()}}" class="img-circle" style="width:50px;"></a>
+              <a class="popovers" href="#" data-container="body" data-trigger="hover" data-placement="top" data-content="{{ucfirst($member->levelInDivision($division))}}" data-original-title="{{$member->getNameOrEmail(true)}}"><img src="{{$member->getAvatarUrl()}}" class="img-circle" style="width:50px;"></a>
             @endforeach
           </div>
         </div>      
